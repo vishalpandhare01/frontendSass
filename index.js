@@ -63,7 +63,7 @@ function openMenu() {
   }
 }
 
-
+/*pagination*/
 function Next() {
   num++;
   getData(num, 12);
