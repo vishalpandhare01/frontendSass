@@ -1,0 +1,352 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// colors
+
+$red100: #faece5;
+$red200: #b69188;
+$red500: #c2553d;
+$white: #ffffff;
+
+//reusabelcss
+
+@mixin flexVeriable {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@mixin decoretionRemove {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+@mixin ancorTag {
+  color: $white;
+  margin: 1rem;
+  padding: 1rem;
+  @include decoretionRemove;
+}
+
+@mixin navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: $red500;
+  flex-wrap: wrap;
+  padding: 0.8rem;
+  margin-top: 1rem;
+}
+
+//header
+
+.header1 {
+  @include flexVeriable;
+  background: $red100;
+  padding-bottom: 1rem;
+  p {
+    margin-top: 1rem;
+  }
+}
+
+.header2 {
+  @include flexVeriable;
+  justify-content: space-around;
+  padding-top: 1rem;
+  flex-wrap: wrap;
+  form {
+    position: relative;
+  
+    input {
+      height: 5vh;
+      width: 35vw;
+      border-radius: 0.5rem;
+      border: 0.01rem solid black;
+      padding-right: 4.5rem; // Adjust the padding to make space for the button
+    }
+  
+    button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 4rem;
+      background-color: $white;
+      border: 0.01rem solid black;
+      border-radius: 0rem 0.5rem 0.5rem 0rem;
+      padding: 0.1rem;
+    }
+  }
+}
+
+//navbar 
+
+nav {
+  @include navbar;
+  font-size: large;
+  // height: 7vh;
+}
+
+@media screen and (max-width: 968px) {
+  .navelement1,
+  .header1,
+  .header2 {
+    visibility: hidden;
+    position: absolute;
+  }
+  nav {
+    margin-top: 0rem;
+  }
+
+  menu {
+    visibility: hidden;
+  }
+
+  #emailbox {
+    width: 55vw;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .menuSvg {
+    visibility: hidden;
+    position: absolute;
+  }
+  menu {
+    visibility: hidden;
+  }
+}
+
+
+//mobile menu 
+menu {
+  visibility: hidden;
+  background-color: $red500;
+  top: 0;
+  position: fixed;
+  height: 100%;
+  width: 70vw;
+  font-size: large;
+  cursor: pointer;
+  p {
+    color: $white;
+    float: right;
+    padding: 1rem;
+  }
+  ul {
+    padding-top: 50%;
+    li {
+      @include decoretionRemove;
+      padding: 1rem;
+      margin-left: 2rem;
+      a ,span{
+        @include ancorTag;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    
+       color: $white;
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        width: 200px;
+        flex-wrap: wrap;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        padding: 12px 16px;
+        margin-top: 0.2rem;
+        z-index: 1;
+        a{
+          @include ancorTag;
+          color: black;
+          &:hover{
+            color: #c2553d;
+            text-decoration: underline;
+          }
+        }
+      }
+      
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+    }
+  }
+}
+
+
+.mobilenav {
+  @include navbar;
+}
+
+.navelement1,
+.navelement2 {
+  display: flex;
+  flex-wrap: wrap;
+  li {
+    @include decoretionRemove;
+    a{
+      @include ancorTag;
+    }
+    span{
+      margin: 3rem;
+    }
+     color: $white;
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      width: 200px;
+      // flex-wrap: wrap;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      padding: 12px 16px;
+      margin-top: 0.2rem;
+      z-index: 1;
+      a{
+        @include ancorTag;
+        color: black;
+        &:hover{
+          color: #c2553d;
+          text-decoration: underline;
+        }
+      }
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+  }
+}
+
+//products section
+
+.products {
+  background-color: $red100;
+
+  p {
+    font-size: large;
+  }
+  .price {
+    color: $red200;
+  }
+}
+
+.col {
+  @include flexVeriable;
+  .card {
+    position: relative;
+    padding: 1rem;
+  }
+  img {
+    width: 350px;
+    height: 350px;
+  }
+  p {
+    text-align: center;
+  }
+  button {
+    position: absolute;
+    left: 50%;
+    bottom: 50px;
+    transform: translate(-50%, -50%);
+    padding: 1rem 3rem 1rem 3rem;
+    background-color: $red500;
+    opacity: 0.8;
+    border: none;
+    color: $white;
+    width: 17rem;
+  }
+}
+
+.pagination {
+  @include flexVeriable;
+  .pagbutton {
+    padding: 0.8rem;
+    margin: 1rem;
+    color: $red100;
+    background-color: $red500;
+    border: none;
+    cursor: pointer;
+    border-radius: 10%;
+    font-size: large;
+  }
+}
+
+//footer 
+
+
+footer {
+  padding: 1rem;
+  background-color: $red500;
+  color: $white;
+  font-size: 15px;
+  p {
+    font-size: medium;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    #getintouch {
+      width: 360px;
+    }
+    #contactus{
+      display: flex;
+     margin-top: -1rem;
+    }
+    #socialmedia{
+      display: flex;
+      margin-top: -1rem;
+     
+    }
+    div {
+      padding: 1rem;
+      // border:1px solid black;
+      p {
+        padding: 0.3rem;
+      }
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        width: fit-content;
+        button {
+          background-color: $red500;
+          color: $white;
+          border: 2px solid $red100;
+          padding: 0.8rem;
+          cursor: pointer;
+        }
+        input {
+          width: 25vw;
+          height: 50px;
+          background-color: $red100;
+          border: none;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+
+  hr {
+    margin-left: 5%;
+    margin-right: 5%;
+    border-style: dashed 2px #ffffff;
+  }
+  #Copyrights {
+    margin-left: 5%;
+    padding-top: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 600) {
+  footer {
+    .container {
+      display: block;
+    }
+  }
+}
