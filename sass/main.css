@@ -70,7 +70,7 @@ nav {
   menu {
     visibility: hidden;
   }
-  #emailbox {
+  #emailBox {
     width: 55vw;
   }
 }
@@ -108,14 +108,16 @@ menu ul li {
   margin-left: 2rem;
   color: #ffffff;
 }
-menu ul li a, menu ul li span {
+menu ul li a,
+menu ul li span {
   color: #ffffff;
   margin: 1rem;
   padding: 1rem;
   text-decoration: none;
   list-style-type: none;
 }
-menu ul li a:hover, menu ul li span:hover {
+menu ul li a:hover,
+menu ul li span:hover {
   text-decoration: underline;
 }
 menu ul li .dropdown-content {
@@ -145,7 +147,7 @@ menu ul li .dropdown:hover .dropdown-content {
   display: block;
 }
 
-.mobilenav {
+.mobileNav {
   display: flex;
   justify-content: space-between;
   background-color: #c2553d;
@@ -228,8 +230,11 @@ menu ul li .dropdown:hover .dropdown-content {
   padding: 1rem;
 }
 .col img {
-  width: 350px;
-  height: 350px;
+  width: 360px;
+  height: 360px;
+}
+.col img:hover {
+  padding: 1rem;
 }
 .col p {
   text-align: center;
@@ -246,6 +251,10 @@ menu ul li .dropdown:hover .dropdown-content {
   color: #ffffff;
   width: 17rem;
 }
+.col button:hover {
+  background-color: black;
+  cursor: pointer;
+}
 
 .pagination {
   display: flex;
@@ -253,7 +262,7 @@ menu ul li .dropdown:hover .dropdown-content {
   align-items: center;
   flex-wrap: wrap;
 }
-.pagination .pagbutton {
+.pagination .pagButton {
   padding: 0.8rem;
   margin: 1rem;
   color: #faece5;
@@ -278,10 +287,10 @@ footer .container {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-footer .container #getintouch {
+footer .container #getInTouch {
   width: 360px;
 }
-footer .container #contactus {
+footer .container #contactUs {
   display: flex;
   margin-top: -1rem;
 }

@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+//All colors
+$red100: #faece5;
+$red200: #b69188;
+$red500: #c2553d;
+$white: #ffffff;
+$black: black;
+
+@mixin flexVariable {
+  display: flex;
+}
+
+@mixin decorationRemove {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+@mixin ancorTag {
+  margin: 1rem;
+  padding: 1rem;
+  @include decorationRemove;
+}
+
+.topNavBar {
+  background-color: $red100;
+  padding: 1rem;
+  a {
+    margin-left: 0.3rem;
+    @include ancorTag;
+    color: $black;
+  }
+}

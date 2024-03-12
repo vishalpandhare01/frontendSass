@@ -22,7 +22,7 @@ async function getData(skip, limit) {
     price.className = "price";
     let title = document.createElement("p");
     newButton.textContent = "ADD TO CART";
-    newButton.className = "addtocart"
+    newButton.className = "addToCart";
     newImg.src = el.thumbnail;
     price.textContent = "Price " + el.price;
     title.textContent = el.title;
@@ -37,28 +37,27 @@ async function getData(skip, limit) {
 }
 getData(num, 12);
 
-
 /* menu bar button function */
 function openMenu() {
   console.log("work");
   let menu = document.getElementById("menu");
-  let button = document.getElementsByClassName("addtocart");
+  let button = document.getElementsByClassName("addToCart");
   let cardElements = document.getElementsByClassName("card");
   if (menu.style.visibility === "hidden") {
     menu.style.visibility = "visible";
     for (let i = 0; i < cardElements.length; i++) {
       let card = cardElements[i];
-      let btn = button[i]
+      let btn = button[i];
       card.style.position = "static";
-      btn.style.visibility = "hidden"
+      btn.style.visibility = "hidden";
     }
   } else {
     menu.style.visibility = "hidden";
     for (let i = 0; i < cardElements.length; i++) {
       let card = cardElements[i];
-      let btn = button[i]
+      let btn = button[i];
       card.style.position = "relative";
-      btn.style.visibility = "visible"
+      btn.style.visibility = "visible";
     }
   }
 }
