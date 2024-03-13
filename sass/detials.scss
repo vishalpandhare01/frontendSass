@@ -161,6 +161,7 @@ $black: black;
 
 // main content of page
 .container{
+  font-size: large;
   display: flex;
   flex-wrap: wrap;
   padding: 10px;
@@ -177,6 +178,7 @@ $black: black;
     }
   }
   .contentBox{
+    
     h3 ,p {
       padding-top: 10px;
     }
@@ -216,6 +218,7 @@ $black: black;
         border: none;
         color: $white;
         width: 80%;
+        font-size: large;
         &:hover{
           cursor: pointer;
         }
@@ -226,10 +229,12 @@ $black: black;
         background-color: $white;
         border: 1px solid $red500;
         width: 80%;
+        font-size: large;
         &:hover{
           cursor: pointer;
         }
       }
+    
     }
     .description{
       h4{

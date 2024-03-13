@@ -120,6 +120,7 @@
   }
 }
 .container {
+  font-size: large;
   display: flex;
   flex-wrap: wrap;
   padding: 10px;
@@ -172,6 +173,7 @@
   border: none;
   color: #ffffff;
   width: 80%;
+  font-size: large;
 }
 .container .contentBox div #buy:hover {
   cursor: pointer;
@@ -182,6 +184,7 @@
   background-color: #ffffff;
   border: 1px solid #c2553d;
   width: 80%;
+  font-size: large;
 }
 .container .contentBox div #add:hover {
   cursor: pointer;
