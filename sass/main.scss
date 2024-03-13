@@ -231,6 +231,26 @@ menu {
   .price {
     color: $red200;
   }
+  .pagination {
+    display: inline-block;
+  }
+  .pgContainer{
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+  }
+  
+  .pagination button {
+    color: $white;
+    float: left;
+    padding: 8px 16px;
+    background-color: $red500;
+    margin: 3px;
+    border: none;
+    &:hover{
+      cursor: pointer;
+    }
+  }
 }
 
 .col {
@@ -268,21 +288,6 @@ menu {
   }
 }
 
-//pagination
-
-.pagination {
-  @include flexVariable;
-  .pagButton {
-    padding: 0.8rem;
-    margin: 1rem;
-    color: $red100;
-    background-color: $red500;
-    border: none;
-    cursor: pointer;
-    border-radius: 10%;
-    font-size: large;
-  }
-}
 
 //footer
 

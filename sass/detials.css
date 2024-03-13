@@ -10,9 +10,187 @@
 }
 .topNavBar a {
   margin-left: 0.3rem;
-  margin: 1rem;
+  text-decoration: none;
+  list-style-type: none;
   padding: 1rem;
+  color: black;
+}
+
+@media screen and (max-width: 814px) {
+  .topNavBar {
+    display: none;
+    visibility: hidden;
+    position: absolute;
+  }
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  flex-wrap: wrap;
+}
+.navbar div a {
   text-decoration: none;
   list-style-type: none;
   color: black;
+  padding: 0.7rem;
+  font-weight: 700;
+  font-size: large;
+}
+.navbar .cart {
+  display: flex;
+  justify-content: center;
+}
+.navbar .cart form {
+  display: flex;
+  justify-content: center;
+}
+.navbar .cart form input {
+  height: 40px;
+  border-radius: 35px 0px 0px 35px;
+  border: 0.3px solid #c2553d;
+  width: 250px;
+}
+.navbar .cart form button {
+  border-radius: 0px 30px 30px 0px;
+  background-color: #c2553d;
+  border: 0px;
+  width: 50px;
+  height: 40px;
+}
+
+@media screen and (max-width: 469px) {
+  .navbar {
+    display: none;
+    position: absolute;
+  }
+}
+.mobileNav #menuBtn {
+  float: right;
+  background-color: #c2553d;
+  color: #ffffff;
+  border: none;
+  font-size: large;
+}
+.mobileNav .navContainer {
+  top: 0px;
+  background-color: #c2553d;
+  height: 100vh;
+  position: absolute;
+}
+.mobileNav div, .mobileNav form {
+  padding: 10px;
+}
+.mobileNav a, .mobileNav h3 {
+  color: #ffffff;
+  text-decoration: none;
+  list-style-type: none;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+.mobileNav input {
+  width: 200px;
+  height: 30px;
+}
+.mobileNav button {
+  width: 50px;
+  height: 30px;
+}
+.mobileNav .navLinks {
+  width: 60px;
+}
+
+.mobileNavbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #c2553d;
+}
+.mobileNavbar button {
+  background-color: #c2553d;
+  border: none;
+}
+.mobileNavbar div a {
+  margin-left: 3px;
+}
+
+@media screen and (min-width: 469px) {
+  .mobileNav, .mobileNavbar {
+    display: none;
+  }
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.container .imgBox {
+  display: flex;
+  justify-content: center;
+}
+.container .imgBox img {
+  padding: 2rem;
+  width: 80%;
+  height: 80%;
+}
+.container .contentBox h3, .container .contentBox p {
+  padding-top: 10px;
+}
+.container .contentBox .content {
+  margin-left: 10%;
+}
+.container .contentBox .content ul {
+  margin-left: 10%;
+}
+.container .contentBox .quantity {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  margin-top: 1rem;
+}
+.container .contentBox .quantity button {
+  width: 50px;
+  border: none;
+  background-color: none;
+}
+.container .contentBox .quantity button:hover {
+  cursor: pointer;
+}
+.container .contentBox .colors {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.container .contentBox .colors a {
+  text-decoration: none;
+  list-style-type: none;
+}
+.container .contentBox div #buy {
+  padding: 15px 60px 15px 60px;
+  margin-top: 0.5rem;
+  background-color: #c2553d;
+  border: none;
+  color: #ffffff;
+  width: 80%;
+}
+.container .contentBox div #buy:hover {
+  cursor: pointer;
+}
+.container .contentBox div #add {
+  padding: 10px 60px 10px 60px;
+  margin-top: 0.5rem;
+  background-color: #ffffff;
+  border: 1px solid #c2553d;
+  width: 80%;
+}
+.container .contentBox div #add:hover {
+  cursor: pointer;
+}
+.container .contentBox .description {
+  margin-top: 1rem;
+  width: 30vw;
+}
+.container .contentBox .description h4 {
+  font-size: larger;
+  text-decoration: underline;
 }/*# sourceMappingURL=detials.css.map */

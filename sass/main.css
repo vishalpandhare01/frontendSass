@@ -218,6 +218,25 @@ menu ul li .dropdown:hover .dropdown-content {
 .products .price {
   color: #b69188;
 }
+.products .pagination {
+  display: inline-block;
+}
+.products .pgContainer {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+.products .pagination button {
+  color: #ffffff;
+  float: left;
+  padding: 8px 16px;
+  background-color: #c2553d;
+  margin: 3px;
+  border: none;
+}
+.products .pagination button:hover {
+  cursor: pointer;
+}
 
 .col {
   display: flex;
@@ -254,23 +273,6 @@ menu ul li .dropdown:hover .dropdown-content {
 .col button:hover {
   background-color: black;
   cursor: pointer;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.pagination .pagButton {
-  padding: 0.8rem;
-  margin: 1rem;
-  color: #faece5;
-  background-color: #c2553d;
-  border: none;
-  cursor: pointer;
-  border-radius: 10%;
-  font-size: large;
 }
 
 footer {

@@ -1,20 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>details</title>
     <link rel="stylesheet" href="/sass/detials.css" />
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav class="topNavBar">
-            <a href="">About</a>
-            <a href="">Refund policy</a>
-            <a href="">Privacy policy</a>
-            <a href="">Shipping policy</a>
-            <a href="">Terms of Services</a>
-        </nav>
+      <nav class="topNavBar">
+        <a href="">About</a>
+        <a href="">Refund policy</a>
+        <a href="">Privacy policy</a>
+        <a href="">Shipping policy</a>
+        <a href="">Terms of Services</a>
+      </nav>
+      <nav class="navbar">
+        <div>
+          <h3>RPLD</h3>
+        </div>
+        <div>
+          <a href="">Home</a>
+          <a href="">Shop</a>
+          <a href="">Cat1</a>
+          <a href="">Cat2</a>
+        </div>
+        <div class="cart">
+          <form action="">
+            <input type="text" placeholder=" search for products" />
+            <button class="searchBtn">
+              <img src="/icons/detials/search.svg" alt="" />
+            </button>
+          </form>
+          <div>
+            <a href=""><img src="/icons/detials/profile.svg" alt="" /></a>
+            <a href=""><img src="/icons/detials/bag.svg" alt="" /></a>
+          </div>
+        </div>
+      </nav>
+      <nav class="mobileNavbar">
+        <button onclick="menuButton()">
+          <img src="/icons/menu.svg" alt="" />
+        </button>
+        <div>
+          <a href=""><img src="/icons/profile.svg" alt="" /></a>
+          <a href=""><img src="/icons/shopping.svg" alt="" /></a>
+        </div>
+      </nav>
+      <menu class="mobileNav" id="mobileNav">
+        <div class="navContainer">
+          <button id="menuBtn" onclick="menuButton()">X</button>
+          <h3>RPLD</h3>
+          <div class="navLinks">
+            <a href="">HOME</a>
+            <a href="">SHOPE</a>
+            <a href="">Cart1</a>
+            <a href="">Cart2</a>
+          </div>
+          <form action="">
+            <input type="text" placeholder=" search for products" />
+            <button class="searchBtn">search</button>
+          </form>
+        </div>
+      </menu>
     </header>
-</body>
+    <section>
+      <div class="container">
+        <div class="imgBox">
+          <img id="productImg" src="/images/error404.jpeg" alt="" />
+        </div>
+        <div class="contentBox">
+          <h3 id="title">TRIBl WEAVES NOT SO LITTLE SLING BAG</h3>
+          <p id="price">₹14999</p>
+          <p>inclusive of all taxes...</p>
+          <div class="content">
+            <p>Coupon:dsdewrt</p>
+            <p>FLAT 50%</p>
+            <p>Get instate ₹50 discount</p>
+            <ul>
+              <li>Get flat ₹50 off</li>
+              <li>applicable for all customer</li>
+              <li>applicable for prepared</li>
+            </ul>
+          </div>
+          <p>See All Available Coupons</p>
+          <div class="quantity">
+            <p>Quantity</p>
+            <button>+</button>
+            <span>1</span>
+            <button>-</button>
+          </div>
+          <div class="colors">
+            <span>Colors:</span>
+            <a href="">Blue</a>
+            <a href="">Green</a>
+            <a href="">Red</a>
+            <a href="">Black</a>
+          </div>
+          <div class="productBtn">
+            <button id="buy">Buy It Now</button><br>
+            <button id="add">Add to Cart</button>
+          </div>
+          <div class="social">
+          </div>
+          <div class="description" >
+            <h4>Product Description</h4>
+            <p id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore reprehenderit debitis ullam cum modi accusamus eveniet, dolorum sint ut magnam nemo eos autem recusandae ab minus qui hic vero rem!</p>
+          </div>
+        </div>
+    </div>
+    </section>
+  </body>
+  <script src="/details.js"></script>
 </html>

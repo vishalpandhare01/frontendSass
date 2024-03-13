@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/sass/main.css" />
   </head>
   <body>
+
     <!-- header  -->
     <header class="desktopnav">
       <!-- top 1st header for desktop -->
@@ -17,9 +18,9 @@
       <!-- top 2nd header for desktop -->
       <div class="header2">
         <p>Your Logo</p>
-        <form action="">
-          <input type="text" />
-          <button><img src="/icons//search-svgrepo-com.svg" alt="" /></button>
+        <form id="searchForm" >
+          <input type="text" placeholder="Search" id="searchInput"/>
+          <button type="submit" ><img src="/icons//search-svgrepo-com.svg" /></button>
         </form>
         <div>
           <p>Customer services</p>
@@ -177,8 +178,16 @@
       <div class="col" id="col">
         <!-- all product data here  -->
       </div>
-      <div class="pagination">
-        <button class="pagbutton" id="next" onclick="Next()">view all</button>
+      <div class="pgContainer">
+        <div class="pagination" id="pagination">
+          <button id="prevPage" onclick=prevPage()>&laquo;</button>
+          <button class="page" id="0">0</button>
+          <button class="page" id="1">1</button>
+          <button class="page" id="2">2</button>
+          <button class="page" id="3">3</button>
+          <button class="page" id="4">4</button>
+          <button id="nextPage" onclick="nextPage()">&raquo;</button>
+        </div>
       </div>
     </section>
 
