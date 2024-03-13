@@ -3,7 +3,7 @@
 let num = 0;
 let totalItem = 0;
 async function getData(skip) {
-  let limit = 4;
+  let limit = 8;
   const response = await fetch(
     `https://dummyjson.com/products?skip=${skip}&limit=${limit}`
   );
@@ -31,10 +31,7 @@ async function getData(skip) {
     newElement.appendChild(price);
     col.appendChild(newElement);
     newElement.addEventListener("click", function () {
-      localStorage.setItem("thumbnail", el.thumbnail);
-      localStorage.setItem("price", el.price);
-      localStorage.setItem("title", el.title);
-      localStorage.setItem("description", el.description);
+      localStorage.setItem("productId", el.id);
       console.log(el);
       location.replace("details.html");
     });
@@ -164,10 +161,7 @@ document
       newElement.appendChild(price);
       col.appendChild(newElement);
       newElement.addEventListener("click", function () {
-        localStorage.setItem("thumbnail", el.thumbnail);
-        localStorage.setItem("price", el.price);
-        localStorage.setItem("title", el.title);
-        localStorage.setItem("description", el.description);
+        localStorage.setItem("productId", el.id);
         console.log(el);
         location.replace("details.html");
       });
