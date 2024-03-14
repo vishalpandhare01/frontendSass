@@ -2,8 +2,7 @@
 // https://dummyjson.com/products/search?q=phone
 let num = 0;
 let totalItem = 0;
-async function getData(skip) {
-  let limit = 8;
+async function getData(skip, limit) {
   const response = await fetch(
     `https://dummyjson.com/products?skip=${skip}&limit=${limit}`
   );
@@ -41,7 +40,7 @@ async function getData(skip) {
   return;
 }
 
-getData(0);
+getData(0, 12);
 /* menu bar button function */
 function openMenu() {
   console.log("work");
@@ -76,7 +75,7 @@ function nextPage() {
   let btn5 = document.getElementById("4");
 
   console.log("totalItem", totalItem, parseInt(btn5.textContent));
-  if (totalItem <= parseInt(btn5.textContent)) {
+  if (totalItem / 12 <= parseInt(btn5.textContent)) {
     return;
   }
 
@@ -109,23 +108,31 @@ function prevPage() {
 
 document.getElementById("0").addEventListener("click", () => {
   let num = document.getElementById("0").textContent;
-  getData(parseFloat(num));
+  getData(parseFloat(num), 12);
 });
+
 document.getElementById("1").addEventListener("click", () => {
-  let num = document.getElementById("1").textContent;
-  getData(parseFloat(num));
+  let num = document.getElementById("1", 12).textContent;
+  getData(parseFloat(num), 12);
 });
+
 document.getElementById("2").addEventListener("click", () => {
-  let num = document.getElementById("2").textContent;
-  getData(parseFloat(num));
+  let num = document.getElementById("2", 12).textContent;
+  getData(parseFloat(num), 12);
 });
+
 document.getElementById("3").addEventListener("click", () => {
   let num = document.getElementById("3").textContent;
-  getData(parseFloat(num));
+  getData(parseFloat(num), 12);
 });
+
 document.getElementById("4").addEventListener("click", () => {
   let num = document.getElementById("4").textContent;
-  getData(parseFloat(num));
+  if (totalItem / 12 <= parseInt(num)) {
+    getData(parseFloat(num), 4);
+    return;
+  }
+  getData(parseFloat(num), 12);
 });
 
 /* search input function*/
