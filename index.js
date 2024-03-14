@@ -2,7 +2,8 @@
 // https://dummyjson.com/products/search?q=phone
 let num = 0;
 let totalItem = 0;
-async function getData(skip, limit) {
+async function getData(page, limit) {
+ const skip = (page - 1) * limit;
   const response = await fetch(
     `https://dummyjson.com/products?skip=${skip}&limit=${limit}`
   );
@@ -112,12 +113,12 @@ document.getElementById("0").addEventListener("click", () => {
 });
 
 document.getElementById("1").addEventListener("click", () => {
-  let num = document.getElementById("1", 12).textContent;
+  let num = document.getElementById("1").textContent;
   getData(parseFloat(num), 12);
 });
 
 document.getElementById("2").addEventListener("click", () => {
-  let num = document.getElementById("2", 12).textContent;
+  let num = document.getElementById("2").textContent;
   getData(parseFloat(num), 12);
 });
 
