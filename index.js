@@ -1,4 +1,3 @@
-/*Get api with product data*/
 const url = "https://dummyjson.com/products/";
 let num = 0;
 let totalItem = 0;
@@ -12,8 +11,7 @@ function product(productId) {
 function pagination(num) {
   localStorage.clear();
   localStorage.setItem("setNumber", num);
-  document.getElementById(`${num}`).style.border = "3px solid #b69188";
-  getData(parseFloat(num), 12);
+  getData(num * 12, 12); // Adjust the skip and limit based on the current page
   console.log("num", num);
 }
 
@@ -32,32 +30,33 @@ function createNewProduct(data) {
       <p class="price">${el.price}</p>
       <p>${el.title}</p>
       <button class="addToCart">ADD TO CART</button>
-  </div>`;
+    </div>`;
   });
 
   /*pagination buttons*/
-
-  for (let i = 0; i <= Math.ceil(data.total / 12); i++) {
-    if (i === 0) {
-      newPageElement += `<button class="page"  onclick="pagination(${i})" id="${i}">${i}</button>`;
-      continue;
-    }
-    newPageElement += `<button class="page" onclick="pagination(${i})" id="${i}">${i}</button>`;
+  const totalPages = Math.ceil(data.total / 12);
+  const currentPage = parseInt(localStorage.getItem("setNumber"));
+  const startPage = currentPage - 2 >= 0 ? currentPage - 2 : 0;
+  const endPage = startPage + 3 <= totalPages ? startPage + 3 : totalPages;
+  for (let i = startPage; i < endPage; i++) {
+    newPageElement += `<button class="page" onclick="pagination(${i})" id="${i}" ${
+      i === currentPage ? 'style="border: 3px solid #b69188;"' : ""
+    }>${i+1}</button>`;
   }
 
   pageButton.innerHTML = newPageElement;
   col.innerHTML = newElement;
   totalItem = data.total;
-  return;
 }
 
 //fetch all product data
-async function getData(page, limit) {
-  const skip = (page - 1) * limit;
+async function getData(skip, limit) {
   const response = await fetch(`${url}?skip=${skip}&limit=${limit}`);
   const data = await response.json();
   createNewProduct(data);
 }
+
+// Initial page load
 getData(0, 12);
 
 // search product
@@ -108,4 +107,3 @@ function prevPage() {
   num--;
   if (num >= 0) pagination(num);
 }
-
