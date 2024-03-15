@@ -220,11 +220,13 @@ menu ul li .dropdown:hover .dropdown-content {
 }
 .products .pagination {
   display: flex;
+  flex-wrap: wrap;
 }
 .products .pgContainer {
   display: flex;
   justify-content: center;
   margin: 1rem;
+  flex-wrap: wrap;
 }
 .products .pagination button {
   color: #ffffff;
@@ -233,6 +235,7 @@ menu ul li .dropdown:hover .dropdown-content {
   background-color: #c2553d;
   margin: 3px;
   border: none;
+  flex-wrap: wrap;
 }
 .products .pagination button:hover {
   cursor: pointer;

@@ -233,12 +233,16 @@ menu {
   }
   .pagination {
     display: flex;
+    flex-wrap: wrap;
+
     // border: 1px solid black;
   }
   .pgContainer{
     display: flex;
     justify-content: center;
     margin: 1rem;
+    flex-wrap: wrap;
+
   }
   
   .pagination button {
@@ -248,6 +252,7 @@ menu {
     background-color: $red500;
     margin: 3px;
     border: none;
+    flex-wrap: wrap;
     &:hover{
       cursor: pointer;
     }
