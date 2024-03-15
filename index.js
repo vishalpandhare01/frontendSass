@@ -5,13 +5,27 @@ let totalItem = 0;
 
 function product(productId) {
   localStorage.setItem("productId", productId);
-  console.log(productId);
   location.replace("details.html");
+}
+
+// pagination function as per click on number
+function pagination(num) {
+  localStorage.clear();
+  localStorage.setItem("setNumber", num);
+  document.getElementById(`${num}`).style.border = "3px solid #b69188";
+  getData(parseFloat(num), 12);
+  console.log("num", num);
 }
 
 // create new html element
 function createNewProduct(data) {
+  // new element products
+  const col = document.getElementById("col");
+  const pageButton = document.getElementById("pageBtn");
+  col.innerHTML = " ";
+  pageButton.innerHTML = "";
   let newElement = "";
+  let newPageElement = "";
   data.products.forEach((el) => {
     newElement += `<div class="card" id="card">
       <img src="${el.thumbnail}" alt="" id="productImg" onclick="product(${el.id})">
@@ -20,16 +34,25 @@ function createNewProduct(data) {
       <button class="addToCart">ADD TO CART</button>
   </div>`;
   });
+
+  /*pagination buttons*/
+
+  for (let i = 0; i <= Math.ceil(data.total / 12); i++) {
+    if (i === 0) {
+      newPageElement += `<button class="page"  onclick="pagination(${i})" id="${i}">${i}</button>`;
+      continue;
+    }
+    newPageElement += `<button class="page" onclick="pagination(${i})" id="${i}">${i}</button>`;
+  }
+
+  pageButton.innerHTML = newPageElement;
   col.innerHTML = newElement;
   totalItem = data.total;
-  console.log(data);
   return;
 }
 
 //fetch all product data
 async function getData(page, limit) {
-  const col = document.getElementById("col");
-  col.innerHTML = " ";
   const skip = (page - 1) * limit;
   const response = await fetch(`${url}?skip=${skip}&limit=${limit}`);
   const data = await response.json();
@@ -42,8 +65,6 @@ document
   .getElementById("searchForm")
   .addEventListener("submit", async function (event) {
     event.preventDefault();
-    const col = document.getElementById("col");
-    col.innerHTML = " ok ";
     let searchInputValue = document.getElementById("searchInput").value;
     const response = await fetch(`${url}search?q=${searchInputValue}`);
     const data = await response.json();
@@ -77,70 +98,14 @@ function openMenu() {
 
 /*pagination number movement*/
 function nextPage() {
-  let paginationElement = document.getElementById("pagination");
-  let btn1 = document.getElementById("0");
-  let btn2 = document.getElementById("1");
-  let btn3 = document.getElementById("2");
-  let btn4 = document.getElementById("3");
-  let btn5 = document.getElementById("4");
-
-  console.log("totalItem", totalItem, parseInt(btn5.textContent));
-  if (totalItem / 12 < parseInt(btn5.textContent)) {
-    return;
-  }
-
-  btn1.textContent = parseInt(btn1.textContent) + 5;
-  btn2.textContent = parseInt(btn2.textContent) + 5;
-  btn3.textContent = parseInt(btn3.textContent) + 5;
-  btn4.textContent = parseInt(btn4.textContent) + 5;
-  btn5.textContent = parseInt(btn5.textContent) + 5;
+  let num = parseInt(localStorage.getItem("setNumber"));
+  num++;
+  if (num <= Math.ceil(totalItem / 12)) pagination(num);
 }
 
 function prevPage() {
-  let btn1 = document.getElementById("0");
-  let btn2 = document.getElementById("1");
-  let btn3 = document.getElementById("2");
-  let btn4 = document.getElementById("3");
-  let btn5 = document.getElementById("4");
-
-  if (parseInt(btn1.textContent) === 0) {
-    return;
-  }
-
-  btn1.textContent = parseInt(btn1.textContent) - 5;
-  btn2.textContent = parseInt(btn2.textContent) - 5;
-  btn3.textContent = parseInt(btn3.textContent) - 5;
-  btn4.textContent = parseInt(btn4.textContent) - 5;
-  btn5.textContent = parseInt(btn5.textContent) - 5;
+  let num = parseInt(localStorage.getItem("setNumber"));
+  num--;
+  if (num >= 0) pagination(num);
 }
-
-/*pagination buttons*/
-document.getElementById("0").addEventListener("click", () => {
-  let num = document.getElementById("0").textContent;
-  getData(parseFloat(num), 12);
-});
-
-document.getElementById("1").addEventListener("click", () => {
-  let num = document.getElementById("1").textContent;
-  getData(parseFloat(num), 12);
-});
-
-document.getElementById("2").addEventListener("click", () => {
-  let num = document.getElementById("2").textContent;
-  getData(parseFloat(num), 12);
-});
-
-document.getElementById("3").addEventListener("click", () => {
-  let num = document.getElementById("3").textContent;
-  getData(parseFloat(num), 12);
-});
-
-document.getElementById("4").addEventListener("click", () => {
-  let num = document.getElementById("4").textContent;
-  if (totalItem / 12 <= parseInt(num)) {
-    getData(parseFloat(num), 4);
-    return;
-  }
-  getData(parseFloat(num), 12);
-});
 
