@@ -232,7 +232,8 @@ menu {
     color: $red200;
   }
   .pagination {
-    display: inline-block;
+    display: flex;
+    // border: 1px solid black;
   }
   .pgContainer{
     display: flex;

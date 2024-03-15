@@ -219,7 +219,7 @@ menu ul li .dropdown:hover .dropdown-content {
   color: #b69188;
 }
 .products .pagination {
-  display: inline-block;
+  display: flex;
 }
 .products .pgContainer {
   display: flex;

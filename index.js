@@ -1,47 +1,55 @@
 /*Get api with product data*/
-// https://dummyjson.com/products/search?q=phone
+const url = "https://dummyjson.com/products/";
 let num = 0;
 let totalItem = 0;
-async function getData(page, limit) {
- const skip = (page - 1) * limit;
-  const response = await fetch(
-    `https://dummyjson.com/products?skip=${skip}&limit=${limit}`
-  );
-  const data = await response.json();
-  let col = document.getElementById("col");
-  col.innerHTML = "";
+
+function product(productId) {
+  localStorage.setItem("productId", productId);
+  console.log(productId);
+  location.replace("details.html");
+}
+
+// create new html element
+function createNewProduct(data) {
+  let newElement = "";
   data.products.forEach((el) => {
-    let newElement = document.createElement("div");
-    newElement.className = "card";
-    newElement.id = "card";
-    let newButton = document.createElement("button");
-    let newImg = document.createElement("img");
-    let price = document.createElement("p");
-    price.className = "price";
-    let title = document.createElement("p");
-    newButton.textContent = "ADD TO CART";
-    newButton.className = "addToCart";
-    newImg.src = el.thumbnail;
-    newImg.id = "productImg";
-    price.textContent = "Price " + el.price;
-    title.textContent = el.title;
-    newElement.appendChild(newButton);
-    newElement.appendChild(newImg);
-    newElement.appendChild(title);
-    newElement.appendChild(price);
-    col.appendChild(newElement);
-    newElement.addEventListener("click", function () {
-      localStorage.setItem("productId", el.id);
-      console.log(el);
-      location.replace("details.html");
-    });
+    newElement += `<div class="card" id="card">
+      <img src="${el.thumbnail}" alt="" id="productImg" onclick="product(${el.id})">
+      <p class="price">${el.price}</p>
+      <p>${el.title}</p>
+      <button class="addToCart">ADD TO CART</button>
+  </div>`;
   });
+  col.innerHTML = newElement;
   totalItem = data.total;
   console.log(data);
   return;
 }
 
+//fetch all product data
+async function getData(page, limit) {
+  const col = document.getElementById("col");
+  col.innerHTML = " ";
+  const skip = (page - 1) * limit;
+  const response = await fetch(`${url}?skip=${skip}&limit=${limit}`);
+  const data = await response.json();
+  createNewProduct(data);
+}
 getData(0, 12);
+
+// search product
+document
+  .getElementById("searchForm")
+  .addEventListener("submit", async function (event) {
+    event.preventDefault();
+    const col = document.getElementById("col");
+    col.innerHTML = " ok ";
+    let searchInputValue = document.getElementById("searchInput").value;
+    const response = await fetch(`${url}search?q=${searchInputValue}`);
+    const data = await response.json();
+    createNewProduct(data);
+  });
+
 /* menu bar button function */
 function openMenu() {
   console.log("work");
@@ -69,6 +77,7 @@ function openMenu() {
 
 /*pagination number movement*/
 function nextPage() {
+  let paginationElement = document.getElementById("pagination");
   let btn1 = document.getElementById("0");
   let btn2 = document.getElementById("1");
   let btn3 = document.getElementById("2");
@@ -76,7 +85,7 @@ function nextPage() {
   let btn5 = document.getElementById("4");
 
   console.log("totalItem", totalItem, parseInt(btn5.textContent));
-  if (totalItem / 12 <= parseInt(btn5.textContent)) {
+  if (totalItem / 12 < parseInt(btn5.textContent)) {
     return;
   }
 
@@ -106,7 +115,6 @@ function prevPage() {
 }
 
 /*pagination buttons*/
-
 document.getElementById("0").addEventListener("click", () => {
   let num = document.getElementById("0").textContent;
   getData(parseFloat(num), 12);
@@ -136,47 +144,3 @@ document.getElementById("4").addEventListener("click", () => {
   getData(parseFloat(num), 12);
 });
 
-/* search input function*/
-
-document
-  .getElementById("searchForm")
-  .addEventListener("submit", async function (event) {
-    event.preventDefault();
-    var searchInputValue = document.getElementById("searchInput").value;
-    const response = await fetch(
-      `https://dummyjson.com/products/search?q=${searchInputValue}`
-    );
-    const data = await response.json();
-    let col = document.getElementById("col");
-    col.innerHTML = "";
-    data.products.forEach((el) => {
-      let newElement = document.createElement("div");
-      newElement.className = "card";
-      newElement.id = "card";
-      let newButton = document.createElement("button");
-      let newImg = document.createElement("img");
-      let price = document.createElement("p");
-      price.className = "price";
-      let title = document.createElement("p");
-      newButton.textContent = "ADD TO CART";
-      newButton.className = "addToCart";
-      newImg.src = el.thumbnail;
-      price.textContent = "Price " + el.price;
-      title.textContent = el.title;
-      newElement.appendChild(newButton);
-      newElement.appendChild(newImg);
-      newElement.appendChild(title);
-      newElement.appendChild(price);
-      col.appendChild(newElement);
-      newElement.addEventListener("click", function () {
-        localStorage.setItem("productId", el.id);
-        console.log(el);
-        location.replace("details.html");
-      });
-    });
-    totalItem = data.total;
-    console.log(data);
-    return;
-  });
-
-console.log(document.getElementById("card"));
